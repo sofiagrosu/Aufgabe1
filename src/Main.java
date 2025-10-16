@@ -1,13 +1,20 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+import java.util.List;
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+public class Main {
+    public static void main(String[] args) {
+        GradesCalculator calculator = new GradesCalculator();
+        List<Integer> grades = List.of(45, 67, 89, 90, 34, 76, 88, 92, 100, 54,23);
+        List<Integer> grades1 = List.of(45, 67, 89, 90, 34, 76, 88, 93, 54,23);
+        List<Integer> grades2 = List.of(45, 67, 89, 90, 34, 76, 88, 93, 54,23,-10);//invalid grade -10
+        List<Integer> grades3 = List.of(45, 67, 89, 90, 34, 76, 88, 193, 54,23,-10);//invlalid grade 193
+        System.out.println("Not passing grades: " + calculator.selectNotPassingGrades(grades));
+        // System.out.println("Not passing grades: " + calculator.selectNotPassingGrades(grades2));//error: invalid grade
+        System.out.println("Rounded grades: " + calculator.roundGrades(grades));
+        System.out.println("Average of grades: " + calculator.averageOfGrades(grades));
+        //  System.out.println("Average of grades: " + calculator.averageOfGrades(grades3));//error: invalid grade
+        System.out.println("Max grade: " + calculator.maxGrade(grades));
+        System.out.println("Max grade: " + calculator.maxGrade(grades1));//max out of rounded grades (95)
+
     }
 }
+
